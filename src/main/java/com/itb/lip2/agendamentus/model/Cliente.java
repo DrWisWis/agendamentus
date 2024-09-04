@@ -14,7 +14,7 @@ public class Cliente extends Usuario {
 
     private int telefone;
 
-    private boolean codStatusCliente;
+
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     @JsonIgnore
@@ -38,13 +38,7 @@ public class Cliente extends Usuario {
     }
 
 
-    public boolean isCodStatusCliente() {
-        return codStatusCliente;
-    }
 
-    public void setCodStatusCliente(boolean codStatusCliente) {
-        this.codStatusCliente = codStatusCliente;
-    }
 
     public List<Agendamento> getAgendamentos() {
         return agendamentos;

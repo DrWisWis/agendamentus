@@ -26,4 +26,9 @@ public class EmpresaServicelmpl implements EmpresaService {
             return empresaRepository.save(empr);
         }).orElseThrow(()->new Exception("Empresa não encontrada!"));
     }
+
+    @Override
+    public Empresa save(Empresa empresa) {
+        return empresaRepository.save(empresa);
+    }
 }
