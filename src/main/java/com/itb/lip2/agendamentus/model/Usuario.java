@@ -57,11 +57,12 @@ public abstract class Usuario {
 
 	}
 
-	public Usuario(Long id, String nome,String email, String senha, Collection<Papel> papeis) {
+	public Usuario(Long id, String nome,String email, String senha, String tipoUsuario, Collection<Papel> papeis) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
+		this.tipoUsuario = tipoUsuario;
 		this.papeis = papeis;
 	}
 

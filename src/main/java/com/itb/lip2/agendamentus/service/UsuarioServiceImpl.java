@@ -5,7 +5,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+import com.itb.lip2.agendamentus.model.Funcionario;
 import com.itb.lip2.agendamentus.model.Papel;
+import com.itb.lip2.agendamentus.repository.FuncionarioRepository;
 import com.itb.lip2.agendamentus.repository.PapelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,6 +30,9 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
 	private UsuarioRepository usuarioRepository;
 
 	@Autowired
+	private FuncionarioRepository funcionarioRepository;
+
+	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
 	@Autowired
@@ -38,7 +43,17 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
 	public Usuario save(Usuario usuario) {
 		usuario.setCodStatusUsuario(true);
 		usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
+		usuario.setPapeis(new ArrayList<>());
 		return usuarioRepository.save(usuario);
+	}
+
+	@Override
+	public Usuario saveFuncionario(Funcionario funcionario) {
+		funcionario.setCodStatusUsuario(true);
+		funcionario.setSenha(passwordEncoder.encode(funcionario.getSenha()));
+		funcionario.setPapeis(new ArrayList<>());
+		addPapelToUsuario(funcionario, "ROLE_FUNCIONARIO");
+		return usuarioRepository.save(funcionario);
 	}
 
 
@@ -50,7 +65,8 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
 
 	@Override
 	public Optional<Usuario> findById(Long id) {
-		return usuarioRepository.findById(id);
+		Optional <Usuario> usuario = usuarioRepository.findById(id);
+		return usuario;
 	}
 
 	@Override
@@ -69,8 +85,7 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
 	}
 
 	@Override
-	public void addPapelToUsuario(String email, String nomePapel) {
-		Usuario usuario = usuarioRepository.findByUsername(email);
+	public void addPapelToUsuario(Usuario usuario, String nomePapel) {
 		Papel papel = papelRepository.findByName(nomePapel);
 		usuario.getPapeis().add(papel);
 	}

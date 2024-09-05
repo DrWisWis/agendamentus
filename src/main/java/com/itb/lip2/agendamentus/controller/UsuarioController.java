@@ -3,6 +3,7 @@ package com.itb.lip2.agendamentus.controller;
 import java.net.URI;
 import java.util.List;
 
+import com.itb.lip2.agendamentus.model.Funcionario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,14 @@ public class UsuarioController {
 
 		URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/agendamentus/api/v1/users").toUriString());
 		return ResponseEntity.created(uri).body(usuarioService.save(usuario));
+
+	}
+
+	@PostMapping("/users/funcionario")
+	public ResponseEntity<Usuario> saveFuncionario(@RequestBody Funcionario funcionario) {
+
+		URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/academico/api/v1/users").toUriString());
+		return ResponseEntity.created(uri).body(usuarioService.saveFuncionario(funcionario));
 
 	}
 

@@ -17,8 +17,16 @@ public class Papel {
 	private String nomePapel;
 	private String descricaoPapel;
 	private boolean codStatusPapel;
-	
-	
+
+
+	public Papel() {
+	}
+
+	public Papel(Long id, String nomePapel) {
+		this.id = id;
+		this.nomePapel = nomePapel;
+	}
+
 	public Long getId() {
 		return id;
 	}
