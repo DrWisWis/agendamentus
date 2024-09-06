@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+import com.itb.lip2.agendamentus.model.Cliente;
 import com.itb.lip2.agendamentus.model.Funcionario;
 import com.itb.lip2.agendamentus.model.Papel;
 import com.itb.lip2.agendamentus.repository.FuncionarioRepository;
@@ -54,6 +55,15 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
 		funcionario.setPapeis(new ArrayList<>());
 		addPapelToUsuario(funcionario, "ROLE_FUNCIONARIO");
 		return usuarioRepository.save(funcionario);
+	}
+
+	@Override
+	public Usuario saveCliente(Cliente cliente) {
+		cliente.setCodStatusUsuario(true);
+		cliente.setSenha(passwordEncoder.encode(cliente.getSenha()));
+		cliente.setPapeis(new ArrayList<>());
+		addPapelToUsuario(cliente, "ROLE_CLIENTE");
+		return usuarioRepository.save(cliente);
 	}
 
 
