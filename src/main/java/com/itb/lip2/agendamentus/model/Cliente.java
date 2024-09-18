@@ -12,8 +12,6 @@ import java.util.List;
 @DiscriminatorValue(value = "Cliente")
 public class Cliente extends Usuario {
 
-    private int telefone;
-
 
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
@@ -28,15 +26,6 @@ public class Cliente extends Usuario {
     public Cliente(Long id, String nome, String email, String senha, String tipoUsuario, Collection<Papel> papeis) {
         super(id, nome, email, senha, tipoUsuario, papeis);  // Acesso ao construtor da classe pai
     }
-
-    public int getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(int pontuacao) {
-        this.telefone = telefone;
-    }
-
 
 
 

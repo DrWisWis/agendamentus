@@ -23,4 +23,9 @@ public class AgendamentoServicelmpl implements AgendamentoService{
         return agendamentoRepository.findById(id).get();
     }
 
+    @Override
+    public Agendamento saveAgentamento(Agendamento agendamento) {
+        return agendamentoRepository.save(agendamento);
+    }
+
 }

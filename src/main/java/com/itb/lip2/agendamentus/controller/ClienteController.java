@@ -1,6 +1,7 @@
 package com.itb.lip2.agendamentus.controller;
 
 import com.itb.lip2.agendamentus.model.Cliente;
+import com.itb.lip2.agendamentus.service.AgendamentoService;
 import com.itb.lip2.agendamentus.service.ClienteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +13,10 @@ public class ClienteController {
 
     private final ClienteService clienteService;
 
-    ClienteController(ClienteService clienteService) {
+    private final AgendamentoService agendamentoService;
+    ClienteController(ClienteService clienteService, AgendamentoService agendamentoService) {
         this.clienteService = clienteService;
+        this.agendamentoService = agendamentoService;
     }
 
     @PutMapping("/{id}")
@@ -25,6 +28,9 @@ public class ClienteController {
         }
     }
 
+    /*@PostMapping("/agendamento")
+    public R
+*/
 
 
 }
