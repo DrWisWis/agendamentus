@@ -8,7 +8,7 @@ public interface AgendamentoService {
 
     List<Agendamento> findAll();
     Agendamento findbyId(Long id);
-    Agendamento saveAgentamento(Agendamento agendamento);
+    Agendamento saveAgendamento(Agendamento agendamento);
 
 
 }

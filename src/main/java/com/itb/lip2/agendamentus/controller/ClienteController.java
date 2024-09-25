@@ -1,5 +1,6 @@
 package com.itb.lip2.agendamentus.controller;
 
+import com.itb.lip2.agendamentus.model.Agendamento;
 import com.itb.lip2.agendamentus.model.Cliente;
 import com.itb.lip2.agendamentus.service.AgendamentoService;
 import com.itb.lip2.agendamentus.service.ClienteService;
@@ -28,9 +29,14 @@ public class ClienteController {
         }
     }
 
-    /*@PostMapping("/agendamento")
-    public R
-*/
+    @PostMapping("/agendamento")
+    public ResponseEntity<Object> saveAgendamento(@RequestBody Agendamento agendamento) {
+        try {
+            return ResponseEntity.ok().body(agendamentoService.saveAgendamento(agendamento));
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
 
 
 }

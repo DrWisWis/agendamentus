@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors();
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(STATELESS).
-                and().authorizeRequests().antMatchers("/agendamentus/api/v1/login/**","/agendamentus/api/v1/users/**", "/agendamentus/api/v1/logout/**").permitAll();
+                and().authorizeRequests().antMatchers("/h2/**","/agendamentus/api/v1/login/**","/agendamentus/api/v1/users/**", "/agendamentus/api/v1/logout/**").permitAll();
         http.authorizeRequests().
                         antMatchers("/agendamentus/api/v1/clientes/**").hasAnyAuthority("ROLE_CLIENTE").
                 antMatchers("/agendamentus/api/v1/funcionarios/**").hasAnyAuthority("ROLE_FUNCIONARIO").

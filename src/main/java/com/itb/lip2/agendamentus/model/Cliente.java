@@ -14,7 +14,7 @@ public class Cliente extends Usuario {
 
 
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.MERGE)
     @JsonIgnore
     private List<Agendamento> agendamentos = new ArrayList<Agendamento>();
 

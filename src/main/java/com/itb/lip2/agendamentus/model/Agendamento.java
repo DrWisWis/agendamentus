@@ -16,9 +16,9 @@ public class Agendamento {
     private LocalDate dataAgendamento;
     private LocalTime horarioAgendamento;
     private String descricaoAgendamento;
-    private boolean codStatusAgendamento;
 
-    @ManyToOne
+
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name="usuario_id")
     private Cliente cliente;
 
@@ -80,13 +80,6 @@ public class Agendamento {
         this.cliente = cliente;
     }
 
-    public boolean isCodStatusAgendamento() {
-        return codStatusAgendamento;
-    }
-
-    public void setCodStatusAgendamento(boolean codStatusAgendamento) {
-        this.codStatusAgendamento = codStatusAgendamento;
-    }
 
     @Override
     public boolean equals(Object o) {
