@@ -57,6 +57,7 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
 		return usuarioRepository.save(funcionario);
 	}
 
+
 	@Override
 	public Usuario saveCliente(Cliente cliente) {
 		cliente.setCodStatusUsuario(true);

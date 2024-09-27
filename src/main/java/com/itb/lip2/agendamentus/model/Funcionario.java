@@ -19,6 +19,11 @@ public class Funcionario extends Usuario {
 
 
     }
+
+    public Funcionario(Long id, String nome, String email, String senha, String tipoUsuario) {
+        super(id, nome, email, senha, tipoUsuario);  // Acesso ao construtor da classe pai
+    }
+
     public Funcionario(Long id, String nome, String email, String senha, String tipoUsuario, Collection<Papel> papeis) {
         super(id, nome, email, senha, tipoUsuario, papeis);  // Acesso ao construtor da classe pai
     }
